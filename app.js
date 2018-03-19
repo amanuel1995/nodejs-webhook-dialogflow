@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 // New Code
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/PhoenixDb');
+var db = monk('mongodb://35.9.22.104:27017/PhoenixDB');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -23,14 +23,14 @@ app.set('view engine', 'jade');
 //app.use(favicon(dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Make our db accessible to our router
 app.use(function(req, res, next) {
     req.db = db;
-    console.log(req, "Request");
+    //console.log(req, "Request");
     next();
 });
 
