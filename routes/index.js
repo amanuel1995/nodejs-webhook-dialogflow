@@ -65,7 +65,6 @@ router.post("/userlist", function(req, res) {
             displayText: docs,
             source: "Aman's webhook - test"
         });
-        //console.log(docs, "Userlist object");
     });
 
 });
